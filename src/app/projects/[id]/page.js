@@ -1,43 +1,74 @@
-import React from 'react'
-import { projectsData } from '../../components/data'
-import { notFound } from 'next/navigation'
-import Link from 'next/link'
+import React from "react";
+import { projectsData } from "../../components/data";
+import { notFound } from "next/navigation";
+import Link from "next/link";
 
 export async function generateStaticParams() {
   return projectsData.map((project) => ({
     id: project.id.toString(),
-  }))
+  }));
 }
 
 const ProjectPage = ({ params }) => {
-  const project = projectsData.find((p) => p.id.toString() === params.id)
+  const project = projectsData.find((p) => p.id.toString() === params.id);
 
   if (!project) {
-    notFound()
+    notFound();
   }
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <Link 
+      <Link
         href="/projects"
         className="inline-block mb-8 text-blue-400 hover:text-blue-300"
       >
         ← Back to Projects
       </Link>
-      
+
       <div className="bg-gray-800 rounded-lg overflow-hidden">
-        <img 
-          src={project.image} 
+        <img
+          src={project.image}
           alt={project.title}
           className="w-full h-96 object-cover"
         />
         <div className="p-8">
-          <h1 className="text-4xl font-bold text-white mb-4">{project.title}</h1>
+          <h1 className="text-4xl font-bold text-white mb-4">
+            {project.title}
+          </h1>
           <p className="text-gray-300 text-lg mb-6">{project.description}</p>
-          
+
+          {/* Notes Section */}
+          <div className="mb-6">
+            <h2 className="text-2xl font-semibold text-white mb-3">Notes</h2>
+            <p className="text-gray-300">{project.notes}</p>
+          </div>
+
+          {/* Details Section */}
+          <div className="mb-6">
+            <h2 className="text-2xl font-semibold text-white mb-3">Details</h2>
+            <p className="text-gray-300">{project.details}</p>
+          </div>
+
+          {/* Technologies Section */}
+          <div className="mb-6">
+            <h2 className="text-2xl font-semibold text-white mb-3">
+              Technologies
+            </h2>
+            <div className="flex flex-wrap gap-2">
+              {project.technologies.map((tech, index) => (
+                <span
+                  key={index}
+                  className="px-3 py-1 bg-blue-600 rounded-full text-sm text-white"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+
           <div className="flex gap-2 mb-8">
             {project.tag.map((tag, index) => (
-              <span 
+              <span
                 key={index}
                 className="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300"
               >
@@ -47,7 +78,7 @@ const ProjectPage = ({ params }) => {
           </div>
 
           <div className="flex gap-4">
-            <a 
+            <a
               href={project.gitUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -55,7 +86,7 @@ const ProjectPage = ({ params }) => {
             >
               View Code
             </a>
-            <a 
+            <a
               href={project.previewUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -67,7 +98,7 @@ const ProjectPage = ({ params }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ProjectPage 
+export default ProjectPage;

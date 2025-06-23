@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import GithubIcon from "../../../public/github-icon.svg";
 import LinkedinIcon from "../../../public/linkedin-icon.svg";
+// import Whatsaap from "../../../public/images/WhatsApp.png";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -62,6 +63,9 @@ const EmailSection = () => {
           <Link href="linkedin.com">
             <Image src={LinkedinIcon} alt="Linkedin Icon" />
           </Link>
+          {/* <Link href="whatsapp.com">
+            <Image src="/images/WhatsApp.png" alt="WhatsApp Icon" />
+          </Link> */}
         </div>
       </div>
       <div>
@@ -84,7 +88,7 @@ const EmailSection = () => {
                 id="email"
                 required
                 className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                placeholder="jacob@google.com"
+                placeholder="pawinachanthachon@gmail.com"
               />
             </div>
             <div className="mb-6">
@@ -119,7 +123,7 @@ const EmailSection = () => {
             </div>
             <button
               type="submit"
-              className="bg-primary-500 hover:bg-primary-600 text-white font-medium py-2.5 px-5 rounded-lg w-full"
+              className="bg-green-800 hover:bg-green-600 text-white font-medium py-2.5 px-5 rounded-lg w-full"
             >
               Send Message
             </button>
