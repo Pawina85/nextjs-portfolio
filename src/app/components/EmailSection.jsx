@@ -2,8 +2,10 @@
 import React, { useState } from "react";
 import GithubIcon from "../../../public/github-icon.svg";
 import LinkedinIcon from "../../../public/linkedin-icon.svg";
+// import Whatsaap from "../../../public/images/WhatsApp.png";
 import Link from "next/link";
 import Image from "next/image";
+import { Mail } from "lucide-react";
 
 const EmailSection = () => {
   const [emailSubmitted, setEmailSubmitted] = useState(false);
@@ -55,12 +57,35 @@ const EmailSection = () => {
           open. Whether you have a question or just want to say hi, I&apos;ll
           try my best to get back to you!
         </p>
-        <div className="socials flex flex-row gap-2">
-          <Link href="github.com">
-            <Image src={GithubIcon} alt="Github Icon" />
+        <div className="socials flex flex-row gap-4 items-center">
+          <Link
+            href="https://github.com/Pawina85"
+            className="hover:scale-110 transition-transform"
+          >
+            <Image src={GithubIcon} alt="Github Icon" width={47} height={47} />
           </Link>
-          <Link href="linkedin.com">
-            <Image src={LinkedinIcon} alt="Linkedin Icon" />
+          <Link
+            href="https://www.linkedin.com/in/pawina-chanthachon"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:scale-110 transition-transform"
+          >
+            <Image
+              src={LinkedinIcon}
+              alt="Linkedin Icon"
+              width={47}
+              height={47}
+            />
+          </Link>
+          <Link
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:scale-110 transition-transform"
+          >
+            <span>
+              <Mail size={43} className="text-white" />
+            </span>
           </Link>
         </div>
       </div>
@@ -84,7 +109,7 @@ const EmailSection = () => {
                 id="email"
                 required
                 className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                placeholder="jacob@google.com"
+                placeholder="pawinachanthachon@gmail.com"
               />
             </div>
             <div className="mb-6">
@@ -119,7 +144,7 @@ const EmailSection = () => {
             </div>
             <button
               type="submit"
-              className="bg-primary-500 hover:bg-primary-600 text-white font-medium py-2.5 px-5 rounded-lg w-full"
+              className="bg-green-800 hover:bg-green-600 text-white font-medium py-2.5 px-5 rounded-lg w-full"
             >
               Send Message
             </button>
