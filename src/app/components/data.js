@@ -1,18 +1,25 @@
 export const projectsData = [
   {
     id: 1,
-    title: "ROUGE Amsterdam - Event Website UI",
+    title: "DESIGN WITH DEV IN MIND",
     description:
-      "A bold, high-contrast web concept for a fictional underground techno club in Amsterdam. The design plays with dark themes, monospace typography, and punchy UI transitions to match the energy of the music scene.",
-    image: "/images/projects/1.png",
-    tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
+      "This is where all my late-night coding, weird UI experiments, and “what if we did this instead?” moments come to life. From AI-powered learning tools to visual-heavy dashboards, every project here started with a curious idea — and maybe too much coffee.Take a scroll, click around, steal some inspo. Or just admire the pixels.I make things that look good, work well, and occasionally surprise you.",
+    image: "/images/projects/4.png",
+    tag: ["All", "web"],
+    gitUrl: "",
+    previewUrl: "https://daedstudios.com/",
     notes:
-      "This project focuses on creating a visually striking UI for an event website.",
+      "This was all about clarity, exploration, and keeping users in flow. We played with soft gradients, generous whitespace, and microinteractions that reward curiosity. That 3D blob? It’s not just a vibe — it’s the vibe.",
     details:
-      "The project explores the use of dark themes and bold transitions to create an immersive experience for users. It was designed with a focus on the underground techno music scene.",
-    technologies: ["HTML", "CSS", "JavaScript", "UI/UX Design"],
+      "We designed a modular, mobile-friendly layout that scales from solo learners to team onboarding tools. Big typography, bold calls to action, and a delightfully weird aesthetic to keep things interesting.",
+    technologies: [
+      "Figma",
+      "Design Systems",
+      "Prototyping",
+      "UI/UX Design",
+      "GPT-4 API",
+      "d3.js",
+    ],
   },
   {
     id: 2,
@@ -21,12 +28,13 @@ export const projectsData = [
       "A modern website concept for a German architecture firm specializing in the preservation and adaptive reuse of historic buildings. The design emphasizes structure, clarity, and storytelling — using a muted gold palette, strong serif typography, and a responsive grid to showcase their mission and vision.",
     image: "/images/projects/2.png",
     tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
-    notes: "A concept for a German architecture firm's website.",
+    gitUrl: "",
+    previewUrl: "https://altarchitects.netlify.app/",
+    notes:
+      "A clean, grid-based website designed to reflect the same clarity and structure you'd expect from a well-drawn blueprint. Minimal UI, maximum focus on the work.",
     details:
       "The design highlights the firm's expertise in preserving historic buildings, using a muted gold palette and responsive grid to tell their story.",
-    technologies: ["React", "CSS Modules", "Responsive Design"],
+    technologies: ["React", "CSS Modules", "Responsive Design", "CMS"],
   },
   {
     id: 3,
@@ -35,27 +43,28 @@ export const projectsData = [
       "A fast, no-login invoicing tool with bold, high-contrast design. Built with React and Tailwind, it lets users edit invoice templates and download them instantly.",
     image: "/images/projects/3.png",
     tag: ["All", "Web"],
-    gitUrl: "/projects",
-    previewUrl: "/",
-    notes: "A simple and fast invoicing tool with no login required.",
+    gitUrl: "",
+    previewUrl: "https://billlly.netlify.app/",
+    notes:
+      "BILLLY is a lightweight invoicing tool designed for freelancers who need speed and clarity. No account required, no clutter — just a focused interface that gets the job done in seconds.",
     details:
-      "This tool allows users to edit and download invoice templates instantly. Built with React and Tailwind for a seamless user experience.",
-    technologies: ["React", "Tailwind CSS", "JavaScript"],
+      "BILLLY is a lightweight invoicing tool designed for freelancers who need speed and clarity. No account required, no clutter — just a focused interface that gets the job done in seconds.",
+    technologies: ["React", "Tailwind CSS", "JavaScript", "HTML", "Vercel"],
   },
   {
     id: 4,
-    title: "DESIGN WITH DEV IN MIND",
+    title: "ROUGE Amsterdam - Event Website UI",
     description:
-      "Our designs don’t just make things look good — they make them buildable. Every layout, component, and idea is crafted with an understanding of how it will come to life in code.",
-    image: "/images/projects/4.png",
-    tag: ["All", "web"],
-    gitUrl: "/",
-    previewUrl: "/",
+      "We designed ROUGE to feel like you're already inside the venue — no noise, no light, just sharp type, heavy contrast, and minimal friction. Scroll like you're moving through a hallway.",
+    image: "/images/projects/1.png",
+    tag: ["All", "Web"],
+    gitUrl: "",
+    previewUrl: "",
     notes:
-      "A design philosophy that bridges the gap between design and development.",
+      "An immersive, dark-themed concept site for a fictional underground techno club. Designed to capture the mood of late nights, loud beats, and bold visuals — all in one scroll.",
     details:
-      "This project emphasizes creating designs that are not only visually appealing but also easy to implement in code.",
-    technologies: ["Figma", "Design Systems", "Prototyping"],
+      "Split layout, custom ticket form, and strong grid rhythm. Responsive across devices, with micro-animations that stay out of the way but keep things alive.",
+    technologies: ["HTML", "CSS", "JavaScript", "UI/UX Design"],
   },
   {
     id: 5,
@@ -65,10 +74,11 @@ export const projectsData = [
     image: "/images/projects/5.png",
     tag: ["All", "Web"],
     gitUrl: "/",
-    previewUrl: "/",
-    notes: "An AI-powered learning assistant for personalized education.",
+    previewUrl: "https://acta-graph-ai.netlify.app/",
+    notes:
+      "A playful and minimal AI-powered learning assistant that helps users explore topics through a dynamic knowledge graph. Instead of rigid courses, it offers personalized learning paths and AI-curated tasks to accelerate your learning journey.",
     details:
-      "The project visualizes knowledge in a dynamic graph, helping users explore topics and track progress with real-time AI feedback.",
-    technologies: ["AI/ML", "React", "D3.js", "Node.js"],
+      "Graph-based interface to visualize topic connections. AI suggests next topics, quizzes, and tasks. Responsive UI with light, futuristic design. Real-time updates to track progress and feedback",
+    technologies: ["AI/ML", "React", "D3.js", "Node.js", " AI API"],
   },
 ];

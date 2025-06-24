@@ -53,17 +53,17 @@ const AboutSection = () => {
   return (
     <section className="text-white" id="about">
       <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
-        {/* <Image src="/images/Recpic.png" width={500} height={500} /> */}
+        <Image src="/images/Recpic.png" width={500} height={500} />
         <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
           <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
           <p className="text-base lg:text-lg">
             I specialize in React, Next.js, Tailwind CSS, and love turning
             designs into fast, functional websites that feel great to use. I
             bring a sharp eye for detail, a love for smooth UI animations, and a
-            problem-solving mindset to every project. Whether it's building
-            interfaces from scratch or collaborating across teams, I’m all about
-            creating things that work beautifully. Also: obsessed with good
-            design, powered by caffeine, and occasionally lost in a sea of
+            problem-solving mindset to every project. Whether it&apos;s building
+            interfaces from scratch or collaborating across teams, I&apos;m all
+            about creating things that work beautifully. Also: obsessed with
+            good design, powered by caffeine, and occasionally lost in a sea of
             browser tabs.
           </p>
           <div className="flex flex-row justify-start mt-8">

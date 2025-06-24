@@ -60,6 +60,7 @@ const ProjectsSection = () => {
           <motion.li key={index} variants={cardVariants} whileHover="hover">
             <ProjectCard
               key={project.id}
+              id={project.id}
               title={project.title}
               description={project.description}
               imgUrl={project.image}
