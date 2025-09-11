@@ -3,6 +3,7 @@ import React from "react";
 import { projectsData } from "../../components/data";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 export async function generateStaticParams() {
@@ -32,14 +33,23 @@ const ProjectPage = ({ params }) => {
         ← Back to Projects
       </Link>
 
-      <motion.img
+      <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        src={project.image}
-        alt={project.title}
-        className="w-full h-[500px] object-cover rounded-xl mb-12"
-      />
+        className="relative w-full h-[500px] rounded-xl overflow-hidden mb-12 bg-gray-900"
+      >
+        <Image
+          src={project.image}
+          alt={project.title}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
+          className="object-cover"
+          priority={true}
+          placeholder="blur"
+          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyejFxqJvzNhsnt0XYomgKZRQ0p0kEFDMlzdeofCH1MGRB6j0nq/"
+        />
+      </motion.div>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}

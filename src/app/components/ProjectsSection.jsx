@@ -38,11 +38,11 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects">
-      <h2 className="text-center text-4xl font-bold text-white mt-4 mb-8 md:mb-12">
+    <section id="projects" className="py-8 md:py-16">
+      <h2 className="text-center text-3xl sm:text-4xl lg:text-5xl font-bold text-white mt-4 mb-6 md:mb-8 lg:mb-12 px-4">
         My Projects
       </h2>
-      <div className="text-white flex flex-row justify-center items-center gap-2 py-6">
+      <div className="text-white flex flex-row justify-center items-center gap-2 py-4 md:py-6 px-4">
         <ProjectTag
           onClick={handleTagChange}
           name="Web"
@@ -51,7 +51,7 @@ const ProjectsSection = () => {
       </div>
       <motion.ul
         ref={ref}
-        className="grid md:grid-cols-3 gap-8 md:gap-12"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12 px-4 md:px-8"
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
