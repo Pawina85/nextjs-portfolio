@@ -2,7 +2,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import NavLink from "./NavLink";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
+import { Bars3Icon, XMarkIcon,LifebuoyIcon } from "@heroicons/react/24/solid";
 import MenuOverlay from "./MenuOverlay";
 
 const navLinks = [
@@ -28,9 +28,9 @@ const Navbar = () => {
       <div className="flex container lg:py-4 flex-wrap items-center justify-between mx-auto px-4 py-2">
         <Link
           href={"/"}
-          className="text-2xl md:text-5xl text-white font-semibold"
+          className="text-2xl md:text-5xl text-white font-semibold group"
         >
-          LOGO
+         <LifebuoyIcon className="h-8 w-8 text-green-500 inline-block mr-2 animate-spin hover:animate-bounce transition-all duration-300 group-hover:text-green-400 group-hover:scale-110 group-hover:rotate-12" />
         </Link>
         <div className="mobile-menu block md:hidden">
           {!navbarOpen ? (
