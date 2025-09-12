@@ -39,10 +39,10 @@ const ProjectsSection = () => {
 
   return (
     <section id="projects" className="py-8 md:py-16">
-      <h2 className="text-center text-3xl sm:text-4xl lg:text-5xl font-bold text-white mt-4 mb-6 md:mb-8 lg:mb-12 px-4">
+      <h2 className="text-center text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mt-4 mb-6 md:mb-8 lg:mb-12 px-4 transition-colors duration-300">
         My Projects
       </h2>
-      <div className="text-white flex flex-row justify-center items-center gap-2 py-4 md:py-6 px-4">
+      <div className="text-gray-900 dark:text-white flex flex-row justify-center items-center gap-2 py-4 md:py-6 px-4 transition-colors duration-300">
         <ProjectTag
           onClick={handleTagChange}
           name="Web"
