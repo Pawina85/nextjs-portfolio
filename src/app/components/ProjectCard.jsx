@@ -13,7 +13,7 @@ const ProjectCard = ({
 }) => {
   return (
     <div className="group cursor-pointer">
-      <div className="h-48 sm:h-52 md:h-64 lg:h-72 rounded-t-xl relative overflow-hidden bg-gray-900 shadow-lg">
+      <div className="h-48 sm:h-52 md:h-64 lg:h-72 rounded-t-xl relative overflow-hidden bg-gray-200 dark:bg-gray-900 shadow-lg">
         <Image
           src={imgUrl}
           alt={title}
@@ -41,9 +41,9 @@ const ProjectCard = ({
           </div>
         </div>
       </div>
-      <div className="text-white rounded-b-xl bg-[#181818] p-3 sm:p-4 md:p-6 shadow-lg group-hover:bg-gray-800 transition-colors duration-300">
-        <h5 className="text-lg sm:text-xl md:text-2xl font-semibold mb-2 group-hover:text-green-400 transition-colors duration-300 line-clamp-2">{title}</h5>
-        <p className="text-[#ADB7BE] text-sm sm:text-base group-hover:text-gray-300 transition-colors duration-300 line-clamp-3">{description}</p>
+      <div className="text-gray-900 dark:text-white rounded-b-xl bg-gray-100 dark:bg-[#181818] p-3 sm:p-4 md:p-6 shadow-lg group-hover:bg-gray-200 dark:group-hover:bg-gray-800 transition-colors duration-300">
+        <h5 className="text-lg sm:text-xl md:text-2xl font-semibold mb-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors duration-300 line-clamp-2">{title}</h5>
+        <p className="text-gray-600 dark:text-[#ADB7BE] text-sm sm:text-base group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300 line-clamp-3">{description}</p>
       </div>
     </div>
   );

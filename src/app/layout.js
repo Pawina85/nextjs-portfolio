@@ -13,10 +13,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} bg-white dark:bg-[#121212] text-gray-900 dark:text-white transition-colors duration-300`}>
         <ThemeProvider>
-          <Navbar />
-          {children}
+          <div className="min-h-screen bg-white dark:bg-[#121212] transition-colors duration-300">
+            <Navbar />
+            {children}
+          </div>
         </ThemeProvider>
       </body>
     </html>
