@@ -24,11 +24,11 @@ const ProjectPage = ({ params }) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="container mx-auto px-4 py-16 max-w-4xl mt-20"
+      className="container mx-auto px-4 py-16 max-w-4xl mt-20 min-h-screen"
     >
       <Link
         href="/projects"
-        className="inline-block mb-12 text-blue-400 hover:text-blue-300 text-lg"
+        className="inline-block mb-12 text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 text-lg"
       >
         ← Back to Projects
       </Link>
@@ -37,7 +37,7 @@ const ProjectPage = ({ params }) => {
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="relative w-full h-[500px] rounded-xl overflow-hidden mb-12 bg-gray-900"
+        className="relative w-full h-[500px] rounded-xl overflow-hidden mb-12 bg-gray-200 dark:bg-gray-900"
       >
         <Image
           src={project.image}
@@ -56,24 +56,24 @@ const ProjectPage = ({ params }) => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
       >
-        <h1 className="text-5xl font-bold mb-6">{project.title}</h1>
-        <p className="text-xl text-gray-400 mb-12 leading-relaxed">
+        <h1 className="text-5xl font-bold mb-6 text-gray-900 dark:text-white">{project.title}</h1>
+        <p className="text-xl text-gray-600 dark:text-gray-400 mb-12 leading-relaxed">
           {project.description}
         </p>
 
         <div className="space-y-16">
           <div>
-            <h2 className="text-3xl font-semibold mb-4">Overview</h2>
-            <p className="text-gray-300 leading-relaxed">{project.notes}</p>
+            <h2 className="text-3xl font-semibold mb-4 text-gray-900 dark:text-white">Overview</h2>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{project.notes}</p>
           </div>
 
           <div>
-            <h2 className="text-3xl font-semibold mb-4">Details</h2>
-            <p className="text-gray-300 leading-relaxed">{project.details}</p>
+            <h2 className="text-3xl font-semibold mb-4 text-gray-900 dark:text-white">Details</h2>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{project.details}</p>
           </div>
 
           <div>
-            <h2 className="text-3xl font-semibold mb-4">Technologies</h2>
+            <h2 className="text-3xl font-semibold mb-4 text-gray-900 dark:text-white">Technologies</h2>
             <div className="flex flex-wrap gap-3">
               {project.technologies.map((tech, index) => (
                 <motion.span
@@ -81,7 +81,7 @@ const ProjectPage = ({ params }) => {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.3, delay: 0.1 * index }}
                   key={index}
-                  className="px-4 py-2 border border-gray-700 rounded-full text-sm"
+                  className="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-full text-sm text-gray-700 dark:text-gray-300"
                 >
                   {tech}
                 </motion.span>
@@ -94,7 +94,7 @@ const ProjectPage = ({ params }) => {
               href={project.previewUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-3 border border-gray-700 rounded-lg hover:bg-gray-800 transition-colors"
+              className="px-8 py-3 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-900 dark:text-white"
             >
               Live Preview
             </a>
