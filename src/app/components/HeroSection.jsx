@@ -62,11 +62,11 @@ const HeroSection = () => {
           transition={{ duration: 0.5 }}
           className="col-span-4 place-self-center mt-4 lg:mt-0"
         >
-          <div className="rounded-full bg-gradient-to-br from-gray-100 to-gray-200 dark:from-[#181818] dark:to-[#282828] w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] relative transition-all duration-300 shadow-xl hover:shadow-2xl border-4 border-gray-200 dark:border-gray-700">
+          <div className="rounded-full bg-gradient-to-br from-gray-100 to-gray-200 dark:from-[#181818] dark:to-[#282828] w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] relative transition-all duration-300 shadow-xl hover:shadow-2xl border-4 border-gray-200 dark:border-gray-700 overflow-hidden flex items-center justify-center">
             <Image
-              src="/images/mypic1-P.png"
+              src="/images/projects/mypic.png"
               alt="my pic"
-              className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 rounded-full"
+              className="rounded-full object-cover object-center w-full h-full"
               width={300}
               height={300}
             />
