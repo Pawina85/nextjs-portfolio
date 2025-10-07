@@ -107,7 +107,7 @@ const AboutSection = () => {
               whileTap={{ scale: 0.98 }}
             >
               <Image 
-                src="/images/projects/Recpic.png" 
+                src="/images/projects/recpic.png" 
                 fill
                 sizes="(max-width: 640px) 256px, (max-width: 1024px) 320px, (max-width: 1280px) 384px, 450px"
                 className="object-cover"
