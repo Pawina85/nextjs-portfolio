@@ -20,9 +20,19 @@ const EmailSection = () => {
     console.log("Service ID:", serviceID ? `${serviceID.substring(0, 8)}...` : "❌ Missing");
     console.log("Template ID:", templateID ? `${templateID.substring(0, 8)}...` : "❌ Missing");
     console.log("Public Key:", publicKey ? `${publicKey.substring(0, 8)}...` : "❌ Missing");
+    console.log("Environment check:", {
+      serviceID: !!serviceID,
+      templateID: !!templateID,  
+      publicKey: !!publicKey
+    });
     
     if (!serviceID || !templateID || !publicKey) {
       console.error("❌ EmailJS not properly configured");
+      console.error("Missing variables:", {
+        serviceID: !serviceID,
+        templateID: !templateID,
+        publicKey: !publicKey
+      });
       return false;
     }
     return true;
