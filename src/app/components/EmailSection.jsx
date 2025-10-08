@@ -3,38 +3,66 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FaGithub, FaLinkedin, FaWhatsapp, FaEnvelope } from "react-icons/fa";
+import emailjs from '@emailjs/browser';
 
 const EmailSection = () => {
   const [emailSubmitted, setEmailSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = {
-      email: e.target.email.value,
-      subject: e.target.subject.value,
-      message: e.target.message.value,
-    };
-    const JSONdata = JSON.stringify(data);
-    const endpoint = "/api/send";
+    setIsSubmitting(true);
+    setError("");
+    
+    try {
+      // EmailJS configuration from environment variables
+      const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+      const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
-    // Form the request for sending data to the server.
-    const options = {
-      // The method is POST because we are sending data.
-      method: "POST",
-      // Tell the server we're sending JSON.
-      headers: {
-        "Content-Type": "application/json",
-      },
-      // Body of the request is the JSON data we created above.
-      body: JSONdata,
-    };
+      // Check if EmailJS is configured
+      if (!serviceID || !templateID || !publicKey || 
+          serviceID === 'demo_service' || templateID === 'demo_template' || publicKey === 'demo_public_key') {
+        console.log('📧 EmailJS Configuration Needed');
+        console.log('Please follow the setup guide in EMAILJS_SETUP.md');
+        setError('Email not configured yet. Please check the setup guide or contact me directly via the social links above.');
+        return;
+      }
 
-    const response = await fetch(endpoint, options);
-    const resData = await response.json();
+      // Initialize EmailJS
+      emailjs.init(publicKey);
 
-    if (response.status === 200) {
-      console.log("Message sent.");
+      const templateParams = {
+        to_name: 'Pawina',
+        from_name: e.target.email.value,
+        from_email: e.target.email.value,
+        message: e.target.message.value,
+        subject: e.target.subject.value,
+      };
+
+      console.log('📧 Sending email via EmailJS...');
+      console.log('Service ID:', serviceID);
+      console.log('Template ID:', templateID);
+      console.log('Public Key:', publicKey?.substring(0, 8) + '...');
+      console.log('Template Params:', templateParams);
+      
+      const response = await emailjs.send(
+        serviceID,
+        templateID, 
+        templateParams
+      );
+
+      console.log('✅ Email sent successfully:', response);
       setEmailSubmitted(true);
+      // Reset form
+      e.target.reset();
+      
+    } catch (err) {
+      console.error("❌ Error sending email:", err);
+      setError("Failed to send message. Please try again or contact me directly.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -100,11 +128,30 @@ const EmailSection = () => {
       </div>
       <div>
         {emailSubmitted ? (
-          <p className="text-green-500 text-sm mt-2">
-            Email sent successfully!
-          </p>
+          <div className="text-center p-6 bg-green-50 dark:bg-green-900/20 rounded-xl border border-green-200 dark:border-green-800">
+            <p className="text-green-600 dark:text-green-400 font-medium">
+              ✅ Email sent successfully!
+            </p>
+            <p className="text-sm text-green-500 dark:text-green-300 mt-2">
+              Thank you for reaching out. I'll get back to you soon!
+            </p>
+            <button
+              onClick={() => setEmailSubmitted(false)}
+              className="mt-4 text-sm text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-200 underline transition-colors duration-300"
+            >
+              Send another message
+            </button>
+          </div>
         ) : (
           <form className="flex flex-col" onSubmit={handleSubmit}>
+            {error && (
+              <div className="mb-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
+                <p className="text-red-600 dark:text-red-400 text-sm">
+                  {error}
+                </p>
+              </div>
+            )}
+            
             <div className="mb-6">
               <label
                 htmlFor="email"
@@ -117,7 +164,8 @@ const EmailSection = () => {
                 type="email"
                 id="email"
                 required
-                className="bg-gray-50 dark:bg-[#18191E] border-2 border-gray-200 dark:border-[#33353F] placeholder-gray-400 dark:placeholder-[#9CA2A9] text-gray-900 dark:text-gray-100 text-sm rounded-xl block w-full p-3 focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 shadow-sm"
+                disabled={isSubmitting}
+                className="bg-gray-50 dark:bg-[#18191E] border-2 border-gray-200 dark:border-[#33353F] placeholder-gray-400 dark:placeholder-[#9CA2A9] text-gray-900 dark:text-gray-100 text-sm rounded-xl block w-full p-3 focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
                 placeholder="pawinachanthachon@gmail.com"
               />
             </div>
@@ -133,7 +181,8 @@ const EmailSection = () => {
                 type="text"
                 id="subject"
                 required
-                className="bg-gray-50 dark:bg-[#18191E] border-2 border-gray-200 dark:border-[#33353F] placeholder-gray-400 dark:placeholder-[#9CA2A9] text-gray-900 dark:text-gray-100 text-sm rounded-xl block w-full p-3 focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 shadow-sm"
+                disabled={isSubmitting}
+                className="bg-gray-50 dark:bg-[#18191E] border-2 border-gray-200 dark:border-[#33353F] placeholder-gray-400 dark:placeholder-[#9CA2A9] text-gray-900 dark:text-gray-100 text-sm rounded-xl block w-full p-3 focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
                 placeholder="Just saying hi"
               />
             </div>
@@ -147,15 +196,18 @@ const EmailSection = () => {
               <textarea
                 name="message"
                 id="message"
-                className="bg-gray-50 dark:bg-[#18191E] border-2 border-gray-200 dark:border-[#33353F] placeholder-gray-400 dark:placeholder-[#9CA2A9] text-gray-900 dark:text-gray-100 text-sm rounded-xl block w-full p-3 focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 shadow-sm min-h-[120px]"
+                required
+                disabled={isSubmitting}
+                className="bg-gray-50 dark:bg-[#18191E] border-2 border-gray-200 dark:border-[#33353F] placeholder-gray-400 dark:placeholder-[#9CA2A9] text-gray-900 dark:text-gray-100 text-sm rounded-xl block w-full p-3 focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 shadow-sm min-h-[120px] disabled:opacity-50 disabled:cursor-not-allowed"
                 placeholder="Let's talk about..."
               />
             </div>
-                        <button
+            <button
               type="submit"
-              className="bg-gradient-to-br from-green-700 to-green-600 hover:from-green-600 hover:to-green-500 text-white font-semibold py-3 px-6 rounded-xl w-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+              disabled={isSubmitting}
+              className="bg-gradient-to-br from-green-700 to-green-600 hover:from-green-600 hover:to-green-500 text-white font-semibold py-3 px-6 rounded-xl w-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:hover:shadow-lg"
             >
-              Send Message
+              {isSubmitting ? "Sending..." : "Send Message"}
             </button>
           </form>
         )}

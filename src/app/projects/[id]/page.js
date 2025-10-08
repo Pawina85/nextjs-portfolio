@@ -89,16 +89,18 @@ const ProjectPage = ({ params }) => {
             </div>
           </div>
 
-          <div className="flex gap-6">
-            <a
-              href={project.previewUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-3 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-900 dark:text-white"
-            >
-              Live Preview
-            </a>
-          </div>
+          {project.id === 1 && project.previewUrl && (
+            <div className="flex gap-6">
+              <a
+                href={project.previewUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-3 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-900 dark:text-white"
+              >
+                Live Preview
+              </a>
+            </div>
+          )}
         </div>
       </motion.div>
     </motion.div>
