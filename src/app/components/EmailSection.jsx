@@ -133,7 +133,7 @@ const EmailSection = () => {
               ✅ Email sent successfully!
             </p>
             <p className="text-sm text-green-500 dark:text-green-300 mt-2">
-              Thank you for reaching out. I'll get back to you soon!
+              Thank you for reaching out. I&apos;ll get back to you soon!
             </p>
             <button
               onClick={() => setEmailSubmitted(false)}
