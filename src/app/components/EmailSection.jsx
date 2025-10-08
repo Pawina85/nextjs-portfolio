@@ -12,9 +12,9 @@ const EmailSection = () => {
 
   // Test EmailJS connection
   const testEmailJS = () => {
-    const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-    const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+    const serviceID = "service_1x0svai";
+    const templateID = "template_h319xqd"; 
+    const publicKey = "79x3ZduLXUMHgeEnS";
     
     console.log("🔍 EmailJS Test Configuration:");
     console.log("Service ID:", serviceID ? `${serviceID.substring(0, 8)}...` : "❌ Missing");
@@ -50,10 +50,15 @@ const EmailSection = () => {
         return;
       }
 
-      // EmailJS configuration from environment variables
-      const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-      const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+      // EmailJS configuration - TEMPORARY HARDCODED FOR TESTING
+      const serviceID = "service_1x0svai";
+      const templateID = "template_h319xqd";
+      const publicKey = "79x3ZduLXUMHgeEnS";
+      
+      // Log what we're using
+      console.log("🔧 HARDCODED VALUES FOR TESTING:");
+      console.log("Service ID:", serviceID);
+      console.log("Template ID:", templateID);
 
       // Check if EmailJS is configured
       if (!serviceID || !templateID || !publicKey || 
