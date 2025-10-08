@@ -13,11 +13,27 @@ export async function generateStaticParams() {
 }
 
 const ProjectPage = ({ params }) => {
+  // Ensure params.id exists
+  if (!params?.id) {
+    notFound();
+  }
+
   const project = projectsData.find((p) => p.id.toString() === params.id);
 
   if (!project) {
     notFound();
   }
+
+  // Ensure required fields exist with defaults
+  const safeProject = {
+    ...project,
+    title: project.title || 'Untitled Project',
+    description: project.description || 'No description available.',
+    notes: project.notes || 'No additional notes available.',
+    details: project.details || 'No detailed information available.',
+    technologies: project.technologies || [],
+    image: project.image || '/images/projects/default.png'
+  };
 
   return (
     <motion.div
@@ -40,8 +56,8 @@ const ProjectPage = ({ params }) => {
         className="relative w-full h-[500px] rounded-xl overflow-hidden mb-12 bg-gray-200 dark:bg-gray-900"
       >
         <Image
-          src={project.image}
-          alt={project.title}
+          src={safeProject.image}
+          alt={safeProject.title}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
           className="object-cover"
@@ -56,26 +72,26 @@ const ProjectPage = ({ params }) => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
       >
-        <h1 className="text-5xl font-bold mb-6 text-gray-900 dark:text-white">{project.title}</h1>
+        <h1 className="text-5xl font-bold mb-6 text-gray-900 dark:text-white">{safeProject.title}</h1>
         <p className="text-xl text-gray-600 dark:text-gray-400 mb-12 leading-relaxed">
-          {project.description}
+          {safeProject.description}
         </p>
 
         <div className="space-y-16">
           <div>
             <h2 className="text-3xl font-semibold mb-4 text-gray-900 dark:text-white">Overview</h2>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{project.notes}</p>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{safeProject.notes}</p>
           </div>
 
           <div>
             <h2 className="text-3xl font-semibold mb-4 text-gray-900 dark:text-white">Details</h2>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{project.details}</p>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{safeProject.details}</p>
           </div>
 
           <div>
             <h2 className="text-3xl font-semibold mb-4 text-gray-900 dark:text-white">Technologies</h2>
             <div className="flex flex-wrap gap-3">
-              {project.technologies.map((tech, index) => (
+              {safeProject.technologies.map((tech, index) => (
                 <motion.span
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -89,10 +105,10 @@ const ProjectPage = ({ params }) => {
             </div>
           </div>
 
-          {project.id === 1 && project.previewUrl && (
+          {safeProject.id === 1 && safeProject.previewUrl && (
             <div className="flex gap-6">
               <a
-                href={project.previewUrl}
+                href={safeProject.previewUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-8 py-3 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-900 dark:text-white"
