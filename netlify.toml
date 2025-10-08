@@ -1,2 +1,14 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
 [[plugins]]
-package = "@netlify/plugin-nextjs"
+  package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  NEXT_TELEMETRY_DISABLED = "1"
+
+# Environment variables for EmailJS (you'll set these in Netlify dashboard)
+# NEXT_PUBLIC_EMAILJS_SERVICE_ID = "service_1x0svai"
+# NEXT_PUBLIC_EMAILJS_TEMPLATE_ID = "template_h319xqd"  
+# NEXT_PUBLIC_EMAILJS_PUBLIC_KEY = "79x3ZduLXUMHgeEnS"

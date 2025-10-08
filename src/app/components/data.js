@@ -29,7 +29,6 @@ export const projectsData = [
     image: "/images/projects/2.png",
     tag: ["All", "Web"],
     gitUrl: "",
-    previewUrl: "https://altarchitects.netlify.app/",
     notes:
       "A clean, grid-based website designed to reflect the same clarity and structure you'd expect from a well-drawn blueprint. Minimal UI, maximum focus on the work.",
     details:
@@ -44,7 +43,6 @@ export const projectsData = [
     image: "/images/projects/3.png",
     tag: ["All", "Web"],
     gitUrl: "",
-    previewUrl: "https://billlly.netlify.app/",
     notes:
       "BILLLY is a lightweight invoicing tool designed for freelancers who need speed and clarity. No account required, no clutter — just a focused interface that gets the job done in seconds.",
     details:
@@ -59,7 +57,6 @@ export const projectsData = [
     image: "/images/projects/1.png",
     tag: ["All", "Web"],
     gitUrl: "",
-    previewUrl: "",
     notes:
       "An immersive, dark-themed concept site for a fictional underground techno club. Designed to capture the mood of late nights, loud beats, and bold visuals — all in one scroll.",
     details:
@@ -74,7 +71,6 @@ export const projectsData = [
     image: "/images/projects/5.png",
     tag: ["All", "Web"],
     gitUrl: "/",
-    previewUrl: "https://acta-graph-ai.netlify.app/",
     notes:
       "A playful and minimal AI-powered learning assistant that helps users explore topics through a dynamic knowledge graph. Instead of rigid courses, it offers personalized learning paths and AI-curated tasks to accelerate your learning journey.",
     details:
