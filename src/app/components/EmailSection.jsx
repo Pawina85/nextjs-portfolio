@@ -10,12 +10,36 @@ const EmailSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
 
+  // Test EmailJS connection
+  const testEmailJS = () => {
+    const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+    
+    console.log("🔍 EmailJS Test Configuration:");
+    console.log("Service ID:", serviceID ? `${serviceID.substring(0, 8)}...` : "❌ Missing");
+    console.log("Template ID:", templateID ? `${templateID.substring(0, 8)}...` : "❌ Missing");
+    console.log("Public Key:", publicKey ? `${publicKey.substring(0, 8)}...` : "❌ Missing");
+    
+    if (!serviceID || !templateID || !publicKey) {
+      console.error("❌ EmailJS not properly configured");
+      return false;
+    }
+    return true;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setError("");
     
     try {
+      // Test configuration first
+      if (!testEmailJS()) {
+        setError('Email not configured yet. Please contact me directly via the social links above.');
+        return;
+      }
+
       // EmailJS configuration from environment variables
       const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
       const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
@@ -28,6 +52,19 @@ const EmailSection = () => {
         console.log('Please follow the setup guide in EMAILJS_SETUP.md');
         setError('Email not configured yet. Please check the setup guide or contact me directly via the social links above.');
         return;
+      }
+
+      // Test network connectivity first
+      console.log('🌐 Testing network connectivity...');
+      try {
+        await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+          method: 'HEAD',
+          mode: 'no-cors'
+        });
+        console.log('✅ Network connectivity OK');
+      } catch (networkErr) {
+        console.error('❌ Network test failed:', networkErr);
+        throw new Error('Network connection failed. Please check your internet connection.');
       }
 
       // Initialize EmailJS
@@ -60,7 +97,21 @@ const EmailSection = () => {
       
     } catch (err) {
       console.error("❌ Error sending email:", err);
-      setError("Failed to send message. Please try again or contact me directly.");
+      
+      // More specific error messages
+      let errorMessage = "Failed to send message. Please try again or contact me directly.";
+      
+      if (err.name === 'TypeError' && err.message.includes('fetch')) {
+        errorMessage = "Network error. Please check your connection and try again.";
+      } else if (err.status === 400) {
+        errorMessage = "Email configuration error. Please contact me directly via the social links above.";
+      } else if (err.status === 401) {
+        errorMessage = "Authentication failed. Please try again later.";
+      } else if (err.text && err.text.includes('service')) {
+        errorMessage = "Email service unavailable. Please try the contact links above.";
+      }
+      
+      setError(errorMessage);
     } finally {
       setIsSubmitting(false);
     }
@@ -202,13 +253,24 @@ const EmailSection = () => {
                 placeholder="Let's talk about..."
               />
             </div>
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="bg-gradient-to-br from-green-700 to-green-600 hover:from-green-600 hover:to-green-500 text-white font-semibold py-3 px-6 rounded-xl w-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:hover:shadow-lg"
-            >
-              {isSubmitting ? "Sending..." : "Send Message"}
-            </button>
+            <div className="space-y-3">
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="bg-gradient-to-br from-green-700 to-green-600 hover:from-green-600 hover:to-green-500 text-white font-semibold py-3 px-6 rounded-xl w-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:hover:shadow-lg"
+              >
+                {isSubmitting ? "Sending..." : "Send Message"}
+              </button>
+              
+              {/* Debug button - remove in production */}
+              <button
+                type="button"
+                onClick={testEmailJS}
+                className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 w-full py-1"
+              >
+                🔍 Test Configuration (Check Console)
+              </button>
+            </div>
           </form>
         )}
       </div>
