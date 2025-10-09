@@ -3,13 +3,18 @@ export const projectsData = [
     id: 1,
     title: "DESIGN WITH DEV IN MIND",
     description:
-      "This is where all my late-night coding, weird UI experiments, and “what if we did this instead?” moments come to life. From AI-powered learning tools to visual-heavy dashboards, every project here started with a curious idea — and maybe too much coffee.Take a scroll, click around, steal some inspo. Or just admire the pixels.I make things that look good, work well, and occasionally surprise you.",
+      "This is where all my late-night coding, weird UI experiments, and 'what if we did this instead?' moments come to life. From AI-powered learning tools to visual-heavy dashboards, every project here started with a curious idea — and maybe too much coffee.Take a scroll, click around, steal some inspo. Or just admire the pixels.I make things that look good, work well, and occasionally surprise you.",
     image: "/images/projects/4.png",
     tag: ["All", "web"],
     gitUrl: "",
     previewUrl: "https://daedstudios.com/",
+    mobileColor: {
+      gradient: "from-gray-600 to-gray-500",
+      accent: "bg-gray-500",
+      text: "text-gray-600 dark:text-gray-400"
+    },
     notes:
-      "This was all about clarity, exploration, and keeping users in flow. We played with soft gradients, generous whitespace, and microinteractions that reward curiosity. That 3D blob? It’s not just a vibe — it’s the vibe.",
+      "This was all about clarity, exploration, and keeping users in flow. We played with soft gradients, generous whitespace, and microinteractions that reward curiosity. That 3D blob? It's not just a vibe — it's the vibe.",
     details:
       "We designed a modular, mobile-friendly layout that scales from solo learners to team onboarding tools. Big typography, bold calls to action, and a delightfully weird aesthetic to keep things interesting.",
     technologies: [
@@ -29,6 +34,11 @@ export const projectsData = [
     image: "/images/projects/2.png",
     tag: ["All", "Web"],
     gitUrl: "",
+    mobileColor: {
+      gradient: "from-gray-600 to-gray-500",
+      accent: "bg-gray-500",
+      text: "text-gray-600 dark:text-gray-400"
+    },
     notes:
       "A clean, grid-based website designed to reflect the same clarity and structure you'd expect from a well-drawn blueprint. Minimal UI, maximum focus on the work.",
     details:
@@ -43,6 +53,11 @@ export const projectsData = [
     image: "/images/projects/3.png",
     tag: ["All", "Web"],
     gitUrl: "",
+    mobileColor: {
+      gradient: "from-gray-600 to-gray-500",
+      accent: "bg-gray-500",
+      text: "text-gray-600 dark:text-gray-400"
+    },
     notes:
       "BILLLY is a lightweight invoicing tool designed for freelancers who need speed and clarity. No account required, no clutter — just a focused interface that gets the job done in seconds.",
     details:
@@ -57,6 +72,11 @@ export const projectsData = [
     image: "/images/projects/1.png",
     tag: ["All", "Web"],
     gitUrl: "",
+    mobileColor: {
+      gradient: "from-gray-600 to-gray-500",
+      accent: "bg-gray-500",
+      text: "text-gray-600 dark:text-gray-400"
+    },
     notes:
       "An immersive, dark-themed concept site for a fictional underground techno club. Designed to capture the mood of late nights, loud beats, and bold visuals — all in one scroll.",
     details:
@@ -71,6 +91,11 @@ export const projectsData = [
     image: "/images/projects/5.png",
     tag: ["All", "Web"],
     gitUrl: "/",
+    mobileColor: {
+      gradient: "from-gray-600 to-gray-500",
+      accent: "bg-gray-500",
+      text: "text-gray-600 dark:text-gray-400"
+    },
     notes:
       "A playful and minimal AI-powered learning assistant that helps users explore topics through a dynamic knowledge graph. Instead of rigid courses, it offers personalized learning paths and AI-curated tasks to accelerate your learning journey.",
     details:

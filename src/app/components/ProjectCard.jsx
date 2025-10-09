@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { CodeBracketIcon, EyeIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import Image from "next/image";
@@ -10,16 +10,39 @@ const ProjectCard = ({
   description,
   gitUrl,
   previewUrl,
+  mobileColor,
 }) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+    
+    return () => window.removeEventListener('resize', checkIsMobile);
+  }, []);
+
   return (
-    <div className="group cursor-pointer">
-      <div className="h-48 sm:h-52 md:h-64 lg:h-72 rounded-t-xl relative overflow-hidden bg-gray-200 dark:bg-gray-900 shadow-lg">
+    <div className={`group cursor-pointer ${
+      isMobile && mobileColor 
+        ? `border-2 border-transparent bg-gradient-to-r ${mobileColor.gradient} p-0.5 rounded-xl project-card-mobile` 
+        : ''
+    }`}>
+      <div className={`${isMobile && mobileColor ? 'bg-white dark:bg-[#121212] rounded-lg' : ''}`}>
+        <div className={`h-48 sm:h-52 md:h-64 lg:h-72 ${isMobile && mobileColor ? 'rounded-lg' : 'rounded-t-xl'} relative overflow-hidden shadow-lg ${
+          isMobile && mobileColor ? `bg-gradient-to-br ${mobileColor.gradient}` : 'bg-gray-200 dark:bg-gray-900'
+        }`}>
         <Image
           src={imgUrl}
           alt={title}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-          className="object-cover transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:scale-110 group-hover:brightness-110"
+          className={`object-cover transition-all duration-500 ${
+            isMobile ? 'grayscale-0 brightness-110' : 'grayscale group-hover:grayscale-0'
+          } group-hover:scale-110 group-hover:brightness-110`}
           priority={false}
           placeholder="blur"
           blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyejFxqJvzNhsnt0XYomgKZRQ0p0kEFDMlzdeofCH1MGRB6j0nq/"
@@ -41,9 +64,12 @@ const ProjectCard = ({
           </div>
         </div>
       </div>
-      <div className="text-gray-900 dark:text-white rounded-b-xl bg-gray-100 dark:bg-[#181818] p-3 sm:p-4 md:p-6 shadow-lg group-hover:bg-gray-200 dark:group-hover:bg-gray-800 transition-colors duration-300">
-        <h5 className="text-lg sm:text-xl md:text-2xl font-semibold mb-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors duration-300 line-clamp-2">{title}</h5>
-        <p className="text-gray-600 dark:text-[#ADB7BE] text-sm sm:text-base group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300 line-clamp-3">{description}</p>
+        <div className={`text-gray-900 dark:text-white ${isMobile && mobileColor ? 'rounded-b-lg' : 'rounded-b-xl'} bg-gray-100 dark:bg-[#181818] p-3 sm:p-4 md:p-6 shadow-lg group-hover:bg-gray-200 dark:group-hover:bg-gray-800 transition-colors duration-300`}>
+        <h5 className={`text-lg sm:text-xl md:text-2xl font-semibold mb-2 transition-colors duration-300 line-clamp-2 ${
+          isMobile && mobileColor ? mobileColor.text : 'group-hover:text-green-600 dark:group-hover:text-green-400'
+        }`}>{title}</h5>
+          <p className="text-gray-600 dark:text-[#ADB7BE] text-sm sm:text-base group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300 line-clamp-3">{description}</p>
+        </div>
       </div>
     </div>
   );
