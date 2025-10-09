@@ -66,6 +66,7 @@ const ProjectsSection = () => {
               imgUrl={project.image}
               gitUrl={project.gitUrl}
               previewUrl={project.previewUrl}
+              mobileColor={project.mobileColor}
             />
           </motion.li>
         ))}
