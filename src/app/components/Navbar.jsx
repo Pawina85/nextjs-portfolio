@@ -100,9 +100,9 @@ const Navbar = () => {
                 className="relative"
               >
                 <LifebuoyIcon className="h-8 w-8 lg:h-10 lg:w-10 text-green-500 group-hover:text-green-400 transition-colors duration-300" />
-                <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 text-xs bg-gradient-to-r from-green-600 to-green-400 bg-clip-text text-transparent font-semibold">
+                {/* <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 text-xs bg-gradient-to-r from-green-600 to-green-400 bg-clip-text text-transparent font-semibold">
                   Portfolio
-                </span>
+                </span> */}
               </motion.div>
             </Link>
           </motion.div>

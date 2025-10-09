@@ -36,7 +36,7 @@ const HeroSection = () => {
                 repeat={Infinity}
               />
             </h1>
-            <p className="text-gray-700 dark:text-[#ADB7BE] text-base sm:text-lg mb-8 lg:text-xl transition-colors duration-300 max-w-md mx-auto lg:mx-0">
+            <p className="text-gray-700 dark:text-[#ADB7BE] text-base sm:text-lg mb-8 lg:text-xl transition-colors duration-300 max-w-lg mx-auto lg:mx-0">
               I&apos;m a frontend developer who turns designs into real,
               responsive, and sometimes magically animated websites.
             </p>
@@ -64,15 +64,16 @@ const HeroSection = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="order-1 lg:order-2 flex justify-center lg:justify-center items-center"
+            className="order-1 lg:order-2 flex justify-center lg:justify-end"
           >
-            <div className="relative">
-              <div className="w-40 h-40 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-[#181818] dark:to-[#282828] shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-br from-green-600 via-green-500 to-green-400 rounded-full blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
+              <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-[#181818] dark:to-[#282828] border-4 border-white dark:border-gray-700 shadow-2xl hover:shadow-green-500/25 transition-all duration-500 group-hover:scale-105">
                 <Image
                   src="/images/projects/mypic.png"
                   alt="Pawina's profile picture"
                   fill
-                  sizes="(max-width: 640px) 160px, (max-width: 1024px) 224px, 256px"
+                  sizes="(max-width: 640px) 256px, (max-width: 1024px) 320px, 384px"
                   className="object-cover object-center"
                   priority
                 />

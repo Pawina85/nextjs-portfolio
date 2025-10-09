@@ -278,13 +278,7 @@ const EmailSection = () => {
               </button>
               
               {/* Debug button - remove in production */}
-              <button
-                type="button"
-                onClick={testEmailJS}
-                className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 w-full py-1"
-              >
-                🔍 Test Configuration (Check Console)
-              </button>
+             
             </div>
           </form>
         )}
