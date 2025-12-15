@@ -130,7 +130,7 @@ const HeroSection = () => {
                 Hire Me
               </Link>
               <a
-                href="/resume/Resume-Pawina.pdf"
+                href="/resume/Pawina-Resume.pdf"
                 download="Resume-Pawina.pdf"
                 className="px-2 py-2 w-full sm:w-auto rounded-full bg-gradient-to-br from-green-800 to-green-600 hover:from-green-700 hover:to-green-500 text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300
                           mobile-button-tap lg:active:scale-105 active:scale-95 active:shadow-md lg:active:shadow-xl"
